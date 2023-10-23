@@ -17,16 +17,17 @@ def get_message():
 message = get_message()
 message_array = []
 
-for i in range(0, len(message), 3):
-    tern = message[i:i+3]
-    bool_res = translation_matrix['t_num'] == tern
-    translation_item = translation_matrix[bool_res]
-    if not translation_item.empty:
-        alphabetical = translation_item['letter'].values[0]
-        message_array.append(alphabetical)
-    else:
-        message_array.append(tern)
+def translator(message):
+    for i in range(0, len(message), 3):
+        tern = message[i:i+3]
+        bool_res = translation_matrix['t_num'] == tern
+        translation_item = translation_matrix[bool_res]
+        if not translation_item.empty:
+            alphabetical = translation_item['letter'].values[0]
+            message_array.append(alphabetical)
+        else:
+            message_array.append(tern)
 
+translator(message)
 translation = ''.join(message_array)
-
 print(translation)
